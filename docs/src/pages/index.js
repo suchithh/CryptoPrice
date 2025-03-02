@@ -61,7 +61,7 @@ function HomepageContent() {
         <div className="col col--6">
           <div className={styles.imageContainer}>
             <img
-              src="/static/img/dashboard.png"
+              src="/CryptoPrice/img/dashboard.png"
               alt="CryptoPrice Dashboard"
               className={styles.featureImage}
             />
@@ -74,7 +74,7 @@ function HomepageContent() {
           <div className={styles.screenshotCard}>
             <div className={styles.screenshotContainer}>
               <img
-                src="/static/img/modal.png"
+                src="/CryptoPrice/img/modal.png"
                 alt="Detailed Crypto Information"
                 className={styles.screenshot}
               />
@@ -82,11 +82,15 @@ function HomepageContent() {
             <p>Detailed Cryptocurrency Information</p>
           </div>
           <div className={styles.screenshotCard}>
-            <div className={styles.screenshotContainer}>
+            <div
+              className={
+                styles.screenshotContainer + " " + styles.phoneContainer
+              }
+            >
               <img
-                src="/static/img/phone.png"
+                src="/CryptoPrice/img/phone.png"
                 alt="Mobile View"
-                className={styles.screenshot}
+                className={styles.phoneScreenshot}
               />
             </div>
             <p>Responsive Mobile Design</p>
@@ -94,7 +98,7 @@ function HomepageContent() {
           <div className={styles.screenshotCard}>
             <div className={styles.screenshotContainer}>
               <img
-                src="/static/img/search.png"
+                src="/CryptoPrice/img/search.png"
                 alt="Search Functionality"
                 className={styles.screenshot}
               />
