@@ -81,7 +81,7 @@ export const CryptoDashboard: React.FC = () => {
       {filteredCryptos.length === 0 && !isLoading && (
         <div className="text-center py-12">
           <p className="text-gray-500 dark:text-gray-400">
-            No cryptocurrencies found matching "{searchTerm}"
+            No cryptocurrencies found matching &quot;{searchTerm}&quot;
           </p>
         </div>
       )}
