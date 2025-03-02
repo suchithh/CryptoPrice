@@ -66,46 +66,58 @@ export const CryptoDashboard: React.FC = () => {
           </h1>
         </div>
 
-        <div className="flex w-full sm:w-auto gap-2">
-          <Input
-            type="text"
-            placeholder="Search cryptocurrencies"
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full sm:w-64"
-          />
-
-          <Button
-            onClick={handleRefresh}
-            variant="outline"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <>
-                <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
-                Refreshing
-              </>
-            ) : (
-              "Refresh"
+        <div className="flex flex-col sm:flex-row w-full sm:w-auto gap-2">
+          <div className="relative w-full sm:w-64 mb-4 sm:mb-0">
+            <Input
+              type="text"
+              placeholder="Search cryptocurrencies"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full"
+            />
+            {searchTerm && (
+              <button
+                onClick={() => setSearchTerm("")}
+                className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500 dark:text-gray-400"
+              >
+                x
+              </button>
             )}
-          </Button>
+          </div>
 
-          <Select
-            value={String(itemsToDisplay)}
-            onValueChange={(val) => setItemsToDisplay(Number(val))}
-          >
-            <SelectTrigger className="w-fit">
-              <SelectValue placeholder="Items per page" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="5">5 items</SelectItem>
-              <SelectItem value="10">10 items</SelectItem>
-              <SelectItem value="15">15 items</SelectItem>
-              <SelectItem value="20">20 items</SelectItem>
-            </SelectContent>
-          </Select>
+          <div className="flex justify-center sm:justify-start gap-2">
+            <Button
+              onClick={handleRefresh}
+              variant="outline"
+              disabled={isLoading}
+            >
+              {isLoading ? (
+                <>
+                  <ReloadIcon className="mr-2 h-4 w-4 animate-spin" />
+                  Refreshing
+                </>
+              ) : (
+                "Refresh"
+              )}
+            </Button>
 
-          <ThemeToggle />
+            <Select
+              value={String(itemsToDisplay)}
+              onValueChange={(val) => setItemsToDisplay(Number(val))}
+            >
+              <SelectTrigger className="w-fit">
+                <SelectValue placeholder="Items per page" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="5">5 items</SelectItem>
+                <SelectItem value="10">10 items</SelectItem>
+                <SelectItem value="15">15 items</SelectItem>
+                <SelectItem value="20">20 items</SelectItem>
+              </SelectContent>
+            </Select>
+
+            <ThemeToggle />
+          </div>
         </div>
       </div>
 
