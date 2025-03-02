@@ -46,7 +46,7 @@ function HomepageContent() {
         <div className="col col--6">
           <h2>Track Cryptocurrency Prices in Real-Time</h2>
           <p className={styles.homeDescription}>
-            CryptoPrice provides powerful tools to monitor and analyze
+            CryptoPrice provides and intuitive dashboard monitor and analyze
             cryptocurrency markets. Get instant access to real-time price data,
             historical charts, and market trends to make informed investment
             decisions.
@@ -61,10 +61,45 @@ function HomepageContent() {
         <div className="col col--6">
           <div className={styles.imageContainer}>
             <img
-              src="/public/dashboard.png"
+              src="/static/img/dashboard.png"
               alt="CryptoPrice Dashboard"
               className={styles.featureImage}
             />
+          </div>
+        </div>
+      </div>
+      <div className={clsx("text--center", styles.screenshotsSection)}>
+        <h2 className="margin-top--xl margin-bottom--lg">Screenshots</h2>
+        <div className={styles.screenshotGrid}>
+          <div className={styles.screenshotCard}>
+            <div className={styles.screenshotContainer}>
+              <img
+                src="/static/img/modal.png"
+                alt="Detailed Crypto Information"
+                className={styles.screenshot}
+              />
+            </div>
+            <p>Detailed Cryptocurrency Information</p>
+          </div>
+          <div className={styles.screenshotCard}>
+            <div className={styles.screenshotContainer}>
+              <img
+                src="/static/img/phone.png"
+                alt="Mobile View"
+                className={styles.screenshot}
+              />
+            </div>
+            <p>Responsive Mobile Design</p>
+          </div>
+          <div className={styles.screenshotCard}>
+            <div className={styles.screenshotContainer}>
+              <img
+                src="/static/img/search.png"
+                alt="Search Functionality"
+                className={styles.screenshot}
+              />
+            </div>
+            <p>Fast Search Capabilities</p>
           </div>
         </div>
       </div>
