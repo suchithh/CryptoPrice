@@ -16,13 +16,20 @@ export interface HistoricalData {
   prices: [number, number][]; // [timestamp, price]
 }
 
+// Modified cache structure to include time frame
+interface HistoricalDataCache {
+  [cryptoId: string]: {
+    [days: number]: HistoricalData;
+  };
+}
+
 interface CryptoState {
   cryptocurrencies: Cryptocurrency[];
   searchTerm: string;
   isLoading: boolean;
   error: string | null;
   selectedCryptoId: string | null;
-  historicalData: Record<string, HistoricalData>; // Cache historical data by crypto id
+  historicalData: HistoricalDataCache;
   isChartLoading: boolean;
   isModalOpen: boolean;
   fetchCryptocurrencies: () => Promise<void>;
@@ -72,10 +79,13 @@ export const useCryptoStore = create<CryptoState>((set, get) => ({
   selectCrypto: (id) => {
     set({ selectedCryptoId: id, isModalOpen: true });
     
-    // Load historical data if we don't have it cached
+    // Default days value
+    const defaultDays = 7;
+    
+    // Load historical data if we don't have it cached for this time frame
     const state = get();
-    if (!state.historicalData[id]) {
-      state.fetchHistoricalData(id);
+    if (!state.historicalData[id] || !state.historicalData[id][defaultDays]) {
+      state.fetchHistoricalData(id, defaultDays);
     }
   },
   
@@ -83,6 +93,14 @@ export const useCryptoStore = create<CryptoState>((set, get) => ({
   
   fetchHistoricalData: async (id, days = 7) => {
     set({ isChartLoading: true });
+    
+    // Check if we already have this specific time frame cached
+    const state = get();
+    if (state.historicalData[id]?.[days]) {
+      set({ isChartLoading: false });
+      return; // Use cached data
+    }
+    
     try {
       const response = await axios.get(
         `https://api.coingecko.com/api/v3/coins/${id}/market_chart`,
@@ -97,7 +115,10 @@ export const useCryptoStore = create<CryptoState>((set, get) => ({
       set(state => ({
         historicalData: {
           ...state.historicalData,
-          [id]: response.data
+          [id]: {
+            ...(state.historicalData[id] || {}),
+            [days]: response.data
+          }
         },
         isChartLoading: false
       }));

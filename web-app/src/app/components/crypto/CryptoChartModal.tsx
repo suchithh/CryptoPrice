@@ -44,10 +44,15 @@ export const CryptoChartModal: React.FC = () => {
   
   if (!selectedCrypto) return null;
   
-  const chartData = selectedCryptoId ? historicalData[selectedCryptoId]?.prices?.map(([timestamp, price]: [number, number]) => ({
-    date: new Date(timestamp).toLocaleDateString(),
-    price
-  })) || [] : [];
+  // Update the chartData access to use the new nested structure
+  const chartData = selectedCryptoId && historicalData[selectedCryptoId]?.[selectedTimeRange]
+    ? historicalData[selectedCryptoId][selectedTimeRange].prices.map(
+        ([timestamp, price]: [number, number]) => ({
+          date: new Date(timestamp).toLocaleDateString(),
+          price
+        })
+      )
+    : [];
   
   const handleTimeRangeChange = (days: number) => {
     setSelectedTimeRange(days);
@@ -55,9 +60,51 @@ export const CryptoChartModal: React.FC = () => {
   };
   
   const formatPrice = (price: number) => {
-    return price >= 1
-      ? `$${price.toFixed(2)}`
-      : `$${price.toFixed(6)}`;
+    // Truncation strategy to make prices more readable
+    if (typeof price !== 'number' || isNaN(price)) {
+      return '$0.00';
+    }
+    
+    // For very large numbers (millions+)
+    if (price >= 1000000) {
+      return `$${(price / 1000000).toFixed(2)}M`;
+    }
+    
+    // For large numbers
+    if (price >= 1000) {
+      return `$${(price / 1000).toFixed(2)}K`;
+    }
+    
+    // For standard prices ($1+)
+    if (price >= 1) {
+      return `$${price.toFixed(2)}`;
+    }
+    
+    // For very small prices (less than 0.000001), use scientific notation
+    if (price < 0.000001) {
+      return `$${price.toExponential(2)}`;
+    }
+    
+    // For small prices between 0.000001 and 0.01
+    if (price < 0.01) {
+      // Count leading zeros to determine how many decimals to show
+      const decimalString = price.toString().split('.')[1] || '';
+      let leadingZeros = 0;
+      for (let i = 0; i < decimalString.length; i++) {
+        if (decimalString[i] === '0') {
+          leadingZeros++;
+        } else {
+          break;
+        }
+      }
+      
+      // Show at least the leading zeros + 2 significant digits
+      const decimalsToShow = Math.min(Math.max(leadingZeros + 2, 6), 8);
+      return `$${price.toFixed(decimalsToShow)}`;
+    }
+    
+    // For small prices between 0.01 and 1
+    return `$${price.toFixed(4)}`;
   };
   
   return (
