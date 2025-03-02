@@ -16,6 +16,8 @@ A real-time cryptocurrency price tracking application with an intuitive dashboar
 
 ## Dashboard
 
+![Dashboard](./docs/static/img/dashboard.png)
+
 ## Features
 
 -   **Real-Time Price Tracking** - Monitor cryptocurrency prices with automatic 60-second updates
@@ -120,10 +122,10 @@ CryptoPrice/
 
 ## Screenshots
 
-<div style="display: flex; justify-content: space-between;">
-    <img src="./docs/static/img/modal.png" width="32%" alt="Detailed Information">
-    <img src="./docs/static/img/phone.png" width="32%" alt="Mobile View">
-    <img src="./docs/static/img/search.png" width="32%" alt="Search Functionality">
+<div align="center" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+  <img src="./docs/static/img/modal.png" width="32%" alt="Detailed Information" style="object-fit: contain; max-height: 300px;">
+  <img src="./docs/static/img/phone.png" width="32%" alt="Mobile View" style="object-fit: contain; max-height: 300px;">
+  <img src="./docs/static/img/search.png" width="32%" alt="Search Functionality" style="object-fit: contain; max-height: 300px;">
 </div>
 
 ## Future Improvements
