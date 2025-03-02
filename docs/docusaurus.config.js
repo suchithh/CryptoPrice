@@ -7,8 +7,8 @@ const darkCodeTheme = require("prism-react-renderer/themes/dracula");
   module.exports = {
     title: "CryptoPrice",
     tagline: "Track Cryptocurrency Prices in Real-Time",
-    url: "https://crypto-price-lyart.vercel.app",
-    baseUrl: "/",
+    url: "https://suchithh.github.io", // Your GitHub Pages URL
+    baseUrl: "/CryptoPrice/", // Base URL for your project (must include trailing slash)
     onBrokenLinks: "throw",
     onBrokenMarkdownLinks: "warn",
     favicon: "img/favicon.ico",
