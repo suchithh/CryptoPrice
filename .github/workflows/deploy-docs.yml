@@ -3,9 +3,11 @@ name: Deploy Documentation to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # or your default branch name
     paths:
       - 'docs/**'
+  # Enable manual triggering
+  workflow_dispatch:
 
 jobs:
   deploy:
