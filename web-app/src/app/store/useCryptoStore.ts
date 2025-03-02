@@ -1,4 +1,3 @@
-// src/store/useCryptoStore.ts
 import { create } from 'zustand';
 import axios from 'axios';
 

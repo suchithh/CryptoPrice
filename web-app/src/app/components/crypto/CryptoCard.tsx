@@ -1,4 +1,3 @@
-// src/components/crypto/CryptoCard.tsx
 import React from 'react';
 import Image from 'next/image';
 import { Cryptocurrency, useCryptoStore } from '@/store/useCryptoStore';
