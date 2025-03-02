@@ -62,7 +62,7 @@ Check out the live application: [CryptoPrice on Vercel](https://crypto-price-lya
     ```bash
     npm run dev
     ```
-5.  Open `http://localhost:3000` in your browser to view the application.
+5.  Open `http://localhost:3000` in your browser to view the application. (Alternatively, use the IP address and port number displayed in the terminal to access the application on other devices)
 
 ## Documentation
 
@@ -115,10 +115,10 @@ CryptoPrice/
 
 ## Key Design Decisions
 
--   Client-side filtering for responsive search experience
--   60-second polling interval to respect API rate limits
+-   Client side filtering for responsive search experience
+-   60 second polling interval to respect API rate limits
 -   Caching strategy for historical data to reduce redundant API calls
--   Mobile-first responsive design using Tailwind's responsive utilities
+-   Mobile adjusted responsive design using Tailwind's responsive utilities
 
 ## Screenshots
 
@@ -135,14 +135,6 @@ CryptoPrice/
 -   Additional historical chart options
 -   WebSocket integration for real-time updates
 -   Progressive Web App capabilities
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Acknowledgements
 
