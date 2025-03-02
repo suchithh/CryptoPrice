@@ -1,16 +1,21 @@
+// src/components/crypto/CryptoCard.tsx
 import React from 'react';
 import Image from 'next/image';
-import { Cryptocurrency } from '@/store/useCryptoStore';
+import { Cryptocurrency, useCryptoStore } from '@/store/useCryptoStore';
 
 interface CryptoCardProps {
   crypto: Cryptocurrency;
 }
 
 export const CryptoCard: React.FC<CryptoCardProps> = ({ crypto }) => {
+  const { selectCrypto } = useCryptoStore();
   const priceChangeIsPositive = crypto.price_change_percentage_24h >= 0;
   
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 transition-transform hover:scale-105">
+    <div 
+      className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 transition-transform hover:scale-105 cursor-pointer"
+      onClick={() => selectCrypto(crypto.id)}
+    >
       <div className="flex items-center mb-4">
         <div className="relative w-10 h-10 mr-3">
           <Image
