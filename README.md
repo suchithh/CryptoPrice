@@ -122,10 +122,15 @@ CryptoPrice/
 
 ## Screenshots
 
-<div align="center" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-  <img src="./docs/static/img/modal.png" width="32%" alt="Detailed Information" style="object-fit: contain; max-height: 300px;">
-  <img src="./docs/static/img/phone.png" width="32%" alt="Mobile View" style="object-fit: contain; max-height: 300px;">
-  <img src="./docs/static/img/search.png" width="32%" alt="Search Functionality" style="object-fit: contain; max-height: 300px;">
+## Screenshots
+
+<div align="center">
+    <img src="./docs/static/img/modal.png" width="50%" alt="Detailed Information" style="object-fit: contain; max-height: 300px;">
+</div>
+
+<div align="center" style="display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 10px;">
+    <img src="./docs/static/img/phone.png" width="45%" alt="Mobile View" style="object-fit: contain; max-height: 300px;">
+    <img src="./docs/static/img/search.png" width="45%" alt="Search Functionality" style="object-fit: contain; max-height: 300px;">
 </div>
 
 ## Future Improvements
